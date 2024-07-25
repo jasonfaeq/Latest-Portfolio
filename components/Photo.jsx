@@ -20,7 +20,8 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
+          className="w-[298px] h-[298px] xl:w-[525px] xl:h-[480px] absolute"
+          style={{ transform: "rotate(1deg)" }}
         >
           <Image
             src="/assets/myphoto.png"
@@ -28,7 +29,7 @@ const Photo = () => {
             quality={100}
             fill
             alt="Jason Faeq's Photo"
-            className="object-contain"
+            className="w-full h-full object-contain rounded-full filter brightness-100"
           />
         </motion.div>
 

@@ -4,6 +4,7 @@ import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import WordAnimation from "@/components/WordAnimation";
 const Home = () => {
   return (
     <section className="h-full">
@@ -11,10 +12,13 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* Text Part */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span>Engineer - Web Developer - Data Scientist</span>
             <h1 className="h1 mb-6">
-              Hello I&apos;m <br />
-              <span className="text-accent">Jason Faeq</span>
+              <span className="">Jason Faeq</span>
+              <br />
+              <span>
+                <WordAnimation /> <br />
+                Engineer
+              </span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               Quick learner with skills in programming and software, backed by
@@ -23,14 +27,20 @@ const Home = () => {
 
             {/* Button and Socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
+              <a
+                href="/public/assets/resume.pdf"
+                download="resume.pdf"
+                className="inline-block"
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"

@@ -8,25 +8,29 @@ const services = [
   {
     num: "01",
     title: "Web Development",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    description:
+      "Building responsive and high-performing websites with the most modern of technologies to ensure compatibility with most devices and gadgets.",
     href: "",
   },
   {
     num: "02",
     title: "UX/UI Design",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    description:
+      "Creating intuitive and visually appealing animated user interfaces that enhance user experience and engagement and have easier access as well.",
     href: "",
   },
   {
     num: "03",
     title: "Video Editing",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    description:
+      "I love crafting compelling video content with professional editing techniques to captivate people and whatever set audience I am targeting.",
     href: "",
   },
   {
     num: "04",
     title: "Data Analysis",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    description:
+      "A passion for analyzing and interpreting complex data sets to drive informed decision-making and strategic planning.",
     href: "",
   },
 ];
