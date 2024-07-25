@@ -25,10 +25,13 @@ module.exports = {
     extend: {
 
       colors: {
-        primary: '#1c1c22',
-        accent: {
-          DEFAULT: "#00ff99",
-          hover: '#00e187',
+        primary: '#1c1c22', // New primary color
+        accent: {        DEFAULT: '#ff6f61', // New default accent color
+          hover: '#e55b50', 
+        },
+        textColor: {
+          outline: 'transparent',
+          'outline-hover': '#FFA500',  // Ensure this matches accent
         },
       },
 

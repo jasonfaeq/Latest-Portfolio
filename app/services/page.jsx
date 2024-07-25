@@ -19,7 +19,7 @@ const services = [
   },
   {
     num: "03",
-    title: "Logo Design",
+    title: "Video Editing",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     href: "",
   },
@@ -50,7 +50,7 @@ const Services = () => {
                 className="flex-1 flex flex-col justify-center gap-6 group"
               >
                 <div className="w-full flex justify-between items-center">
-                  <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
+                  <div className="text-5xl font-extrabold  group-hover:text-accent transition-all duration-500">
                     {service.num}
                   </div>
                   <Link
