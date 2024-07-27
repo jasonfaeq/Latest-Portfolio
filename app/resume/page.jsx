@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FaHtml5,
   FaCss3,
@@ -7,25 +7,27 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaPython,
+  FaJava,
 } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiPowerbi,
+  SiVegas,
+  SiAdobepremierepro,
+  SiCplusplus,
+} from "react-icons/si";
+import { PiFileSqlLight, PiMicrosoftExcelLogo } from "react-icons/pi";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useRouter } from "next/router";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
-import { Scroll } from "lucide-react";
-
-const handleClick = () => {
-  window.open("https://www.google.com", "_blank");
-};
 
 const about = {
   title: "About me",
@@ -42,7 +44,7 @@ const about = {
     },
     {
       fieldName: "Experience",
-      fieldValue: "9+ years",
+      fieldValue: "6+ years",
     },
     {
       fieldName: "Skype",
@@ -76,32 +78,50 @@ const experience = {
     {
       company: "eFusion Technology",
       position: "Front-End Developer (Remote)",
-      duration: "December 2023 - June 2024",
+      location: " - Singapore, Singapore",
+      duration: "Dec 2023 - Jun 2024",
+      description:
+        "• Developed and maintained web applications using modern frontend technologies.\n• Collaborated with design and backend teams to implement user-friendly and responsive interfaces.\n• Optimized web performance and improved user experience through code reviews and debugging.",
     },
     {
       company: "DNO Iraq AS",
       position: "Junior Environmental Analyst",
+      location: " - Zakho, Iraq",
       duration: "Feb 2023 - Aug 2023",
+      description:
+        "• Conducted Environmental Impact Assessments (EIAs) and managed environmental monitoring programs.\n• Developed and implemented environmental management plans and compliance reports.\n• Automated data processing for environmental monitoring using Python and SQL, enhancing efficiency and accuracy.",
     },
     {
       company: "DNO Iraq AS",
       position: "Control Room Operator",
+      location: " - Zakho, Iraq",
       duration: "Nov 2022 - Feb 2023",
+      description:
+        "• Monitored and controlled petroleum refining processes to ensure safety and efficiency.\n• Responded to operational alarms and anomalies, troubleshooting issues promptly.\n• Maintained detailed operational records and data logs for analysis.",
     },
     {
       company: "Gulf Keystone Petroleum",
       position: "Oil Field Operator",
+      location: " - Sheikhan, Iraq",
       duration: "Jun 2022 - Sep 2022",
+      description:
+        "• Monitored well performance and conducted routine maintenance checks.\n• Collected and analyzed crude oil samples for quality control.\n• Assisted in optimizing operational procedures to enhance field productivity.",
     },
     {
       company: "AUK",
       position: "English & Math Teacher",
+      location: " - Duhok, Iraq",
       duration: "May 2019 - Dec 2019",
+      description:
+        "• Provided one-on-one and group tutoring sessions to undergraduate students in English and Math, helping them to understand complex concepts, improve their skills, and achieve better academic results.\n• Custom learning plan for each student with proper constructive feedback.",
     },
     {
       company: "Asiacell",
       position: "Data Analyst",
-      duration: "July 2017 - December 2018",
+      location: " - Baghdad, Iraq",
+      duration: "Jul 2017 - Dec 2018",
+      description:
+        "• Sales prediction and improvement using various Python algorithms and scripts. \n• Designed a cloud-hosted app that saves new clients data using SQL, Azure, Python and basic HTML, CSS and JavaScript.\n• Performed regular data cleaning, standardization, and automation for large datasets.",
     },
   ],
 };
@@ -113,40 +133,48 @@ const education = {
     "I have pursued a diverse educational background, spanning various engineering disciplines. Here are the details of my academic journey:",
   items: [
     {
-      institution: "HAW - Hamburg, Germany",
+      institution: "HAW",
+      fullInstName: "The Hamburg University of Applied Sciences",
       degree: "BSc in Information Engineering",
-      duration: "2024 - 2027",
+      location: " - Hamburg, Germany",
+      duration: "Apr 2024 - Jan 2027",
       description:
         "Electrical engineering courses coupled with computer science.",
     },
     {
-      institution: "PoliTO - Turin, Italy",
+      institution: "PoLito",
+      fullInstName: "Politecnico Di Torino",
       degree: "MSc in Environmental Engineering",
-      duration: "2023 - 2024",
+      location: " - Turin, Italy",
+      duration: "Oct 2023 - Mar 2024",
       description:
         "Further research in geology, environment, and land engineering.",
     },
     {
-      institution: "AUK - Duhok, Iraq",
+      institution: "AUK",
+      fullInstName: "The American University of Kurdistan",
       degree: "BSc in Petroleum Engineering",
-      duration: "2018 - 2022",
+      location: " - Duhok, Iraq",
+      duration: "Jan 2019 - Dec 2022",
       description:
         "Gained theoretical and practical knowledge in various engineering subjects alongside using software such as MATLAB, Oracle Suite, etc.",
     },
     {
-      institution: "Mutamayizeen  - Baghdad",
+      institution: "Mutamayizeen",
+      fullInstName: "Mutamayizeen Secondary School",
       degree: "International Baccalaureate Degree",
-      duration: "2012 - 2015",
+      location: " - Baghdad, Iraq",
+      duration: "Oct 2012 - Aug 2015",
       description:
-        "Gained theoretical and practical knowledge in various engineering subjects alongside using software such as MATLAB, Oracle Suite, etc.",
+        "El-Mutamayizeen is a secondary school for distuinguished students in Baghdad.",
     },
   ],
 };
 
 const skills = {
-  title: "My skills",
+  title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum ab possimus saepe fugiat animi voluptatum accusantium tenetur perspiciatis at exercitationem.",
+    "With knowledge in many theoritical and technical topics and proficency in multiple technologies that concern web development, video editing, data analysis, etc, below is the list that highlights my skills:",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -180,10 +208,113 @@ const skills = {
       icon: <FaFigma />,
       name: "figma",
     },
+    {
+      icon: <PiFileSqlLight />,
+      name: "SQL",
+    },
+    {
+      icon: <SiPowerbi />,
+      name: "Microsoft PowerBI",
+    },
+    {
+      icon: <FaPython />,
+      name: "Python",
+    },
+    {
+      icon: <FaJava />,
+      name: "Java",
+    },
+    {
+      icon: <SiVegas />,
+      name: "Sony Vegas",
+    },
+    {
+      icon: <SiAdobepremierepro />,
+      name: "Adobe Premier Pro",
+    },
+    {
+      icon: <SiCplusplus />,
+      name: "C and C++",
+    },
+    {
+      icon: <PiMicrosoftExcelLogo />,
+      name: "Microsoft Excel",
+    },
   ],
 };
 
+// Modal Component
+function Modal({ isOpen, onClose, content }) {
+  const modalRef = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    const handleOutsideClick = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div
+        ref={modalRef}
+        className="bg-white rounded-lg shadow-xl p-8 w-full max-w-lg relative"
+      >
+        <button
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+          onClick={onClose}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <div>{content}</div>
+      </div>
+    </div>
+  );
+}
+
 const Resume = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -207,7 +338,6 @@ const Resume = () => {
 
           {/* Content */}
           <div className="min-h-[70vh] w-full">
-            {/* Experience Front */}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
@@ -220,8 +350,8 @@ const Resume = () => {
                       return (
                         <li
                           key={index}
-                          onClick={handleClick}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer hover:bg-orange-800 transition-all duration-500 "
+                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer hover:bg-blue-500/70 transition-all duration-500"
+                          onClick={() => handleItemClick(item)}
                         >
                           <span className="text-accent">{item.duration}</span>
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
@@ -238,7 +368,6 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
-            {/* Experience Back */}
             {/* education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
@@ -252,7 +381,8 @@ const Resume = () => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer hover:bg-blue-500/70 transition-all duration-500"
+                          onClick={() => handleItemClick(item)}
                         >
                           <span className="text-accent">{item.duration}</span>
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
@@ -273,31 +403,33 @@ const Resume = () => {
             <TabsContent value="skills" className="w-full h-full">
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3>{skills.title}</h3>
+                  <h3 className="text-4xl font-bold">{skills.title}</h3>
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => {
-                    return (
-                      <li key={index}>
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                {skill.icon}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="capitalize">{skill.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ScrollArea className="h-[350px] px-4">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                    {skills.skillList.map((skill, index) => {
+                      return (
+                        <li key={index}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                  {skill.icon}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className="capitalize">{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
               </div>
             </TabsContent>
             {/* about */}
@@ -328,6 +460,31 @@ const Resume = () => {
           </div>
         </Tabs>
       </div>
+      <Modal
+        isOpen={!!selectedItem}
+        onClose={closeModal}
+        content={
+          selectedItem && (
+            <>
+              <h2 className="text-2xl font-bold text-gray-600">
+                {selectedItem.position}
+              </h2>{" "}
+              <h2 className="text-2xl font-bold text-gray-600">
+                {selectedItem.degree}
+              </h2>
+              <p className="text-gray-600">
+                {selectedItem.company}
+                {selectedItem.fullInstName}
+                {selectedItem.location}
+              </p>
+              <p className="text-gray-600">{selectedItem.duration}</p>
+              <p className="text-gray-600 whitespace-pre-line py-4">
+                {selectedItem.description}
+              </p>
+            </>
+          )
+        }
+      />
     </motion.div>
   );
 };

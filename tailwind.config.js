@@ -26,8 +26,8 @@ module.exports = {
 
       colors: {
         primary: '#1c1c22', // New primary color
-        accent: {        DEFAULT: '#ff6f61', // New default accent color
-          hover: '#e55b50', 
+        accent: {        DEFAULT: '#30acd1', // New default accent color
+          hover: '#218fb0', 
         },
         textColor: {
           outline: 'transparent',

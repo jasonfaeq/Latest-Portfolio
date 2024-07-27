@@ -20,17 +20,17 @@ const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
-    description: "(+49) 582 859 9582",
+    description: "(+49) 177 344 2439",
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "(+49)",
+    description: "jasonfaeq@gmail.com",
   },
   {
     icon: <FaMapMarkerAlt />,
     title: "Address",
-    description: "(+49) 582 859 9582",
+    description: "Lokstedt, Hamburg",
   },
 ];
 
@@ -53,9 +53,8 @@ const Contact = () => {
             <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam,
-                itaque, cum dolor suscipit necessitatibus eum repellat hic sint
-                vitae quis aperiam quia corporis.
+                If you're interested in what you have seen so far and would like
+                to work together, please fill out the form below:
               </p>
               {/* Input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -67,14 +66,14 @@ const Contact = () => {
               {/* Select */}
               <Select>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
+                  <SelectValue placeholder="Reason for Contacting" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Select a Service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">UI/UX Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
+                    <SelectLabel>Reason for Contacting</SelectLabel>
+                    <SelectItem value="est">Job Offer</SelectItem>
+                    <SelectItem value="cst">Services</SelectItem>
+                    <SelectItem value="mst">Other</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
