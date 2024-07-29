@@ -5,6 +5,7 @@ import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import WordAnimation from "@/components/WordAnimation";
+
 const Home = () => {
   return (
     <section className="h-full">

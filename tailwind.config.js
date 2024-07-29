@@ -29,6 +29,9 @@ module.exports = {
         accent: {        DEFAULT: '#30acd1', // New default accent color
           hover: '#218fb0', 
         },
+        accentalt: {        DEFAULT: '#ff7e67', // New alternate accent color
+          hover: '#ff6b54', 
+        },
         textColor: {
           outline: 'transparent',
           'outline-hover': '#FFA500',  // Ensure this matches accent

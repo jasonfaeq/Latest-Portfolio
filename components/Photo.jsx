@@ -20,8 +20,7 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[298px] h-[298px] xl:w-[525px] xl:h-[480px] absolute"
-          style={{ transform: "rotate(1deg)" }}
+          className="w-[298px] h-[298px] xl:w-[525px] xl:h-[500px] absolute"
         >
           <Image
             src="/assets/myphoto.png"

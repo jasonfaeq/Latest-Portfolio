@@ -20,11 +20,11 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "Data Analysis",
+    title: "Steam Game Analysis",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur rem maiores libero sint praesentium.",
-    stack: [{ name: "html 5" }, { name: "css" }, { name: "javascript" }],
+      "This project is a data analysis project that analyzes the data of the games on the Steam platform with focus on Bethesda Game Studios.",
+    stack: [{ name: "SQL" }, { name: "Microsoft Power BI" }],
     image: "/assets/work/thumb1.png",
     live: "",
     github: "",
