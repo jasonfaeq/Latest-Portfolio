@@ -22,5 +22,8 @@
     .text-outline-hover {
         -webkit-text-stroke: 1px #00ff99;
     }
+    .text-different-color {
+        color: #0d6392; /* Replace with your desired color */
+      }
 }
 

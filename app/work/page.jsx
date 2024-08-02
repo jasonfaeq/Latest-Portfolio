@@ -20,36 +20,29 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "Data Analysis",
+    category: "dataanalysis",
     title: "Steam Game Analysis",
     description:
       "This project is a data analysis project that analyzes the data of the games on the Steam platform with focus on Bethesda Game Studios.",
     stack: [{ name: "SQL" }, { name: "Microsoft Power BI" }],
     image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
+    live: "https://github.com/jasonfaeq/steam-statistics/",
+    github: "https://github.com/jasonfaeq/steam-statistics/",
   },
   {
     num: "02",
     category: "frontend",
-    title: "project 2",
+    title: "Dragon Gym",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur rem maiores libero sint praesentium.",
-    stack: [{ name: "html 5" }, { name: "css" }, { name: "javascript" }],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "03",
-    category: "frontend",
-    title: "project 3",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur rem maiores libero sint praesentium.",
-    stack: [{ name: "html 5" }, { name: "css" }, { name: "javascript" }],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
+      "A simple landing page for a gym with a modern design and a smooth user experience.",
+    stack: [
+      { name: "Next JS" },
+      { name: "Tailwind CSS" },
+      { name: "Framer Motion" },
+    ],
+    image: "/assets/work/thumb2.jpg",
+    live: "https://dragon-gym.vercel.app/",
+    github: "https://github.com/jasonfaeq/dragon-gym",
   },
 ];
 
@@ -81,7 +74,7 @@ const Work = () => {
               </div>
               {/* Project Category */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
+                {project.title}
               </h2>
               {/* Project Description */}
               <p className="text-white/60">{project.description}</p>
@@ -100,7 +93,11 @@ const Work = () => {
               {/* Buttons */}
               <div className="flex items-center gap-4">
                 {/* Live Project Button */}
-                <Link href={project.live}>
+                <Link
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -113,7 +110,11 @@ const Work = () => {
                   </TooltipProvider>
                 </Link>
                 {/* Github Project Button */}
-                <Link href={project.live}>
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -142,11 +143,11 @@ const Work = () => {
                       {/* Overlay */}
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       {/* Image */}
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full h-full flex justify-center items-center bg-inherit border-2 border-gray-300 rounded-lg ">
                         <Image
                           src={project.image}
+                          className="object-cover" // Changed from object-cover to object-contain
                           fill
-                          className="object-cover"
                           alt=""
                         />
                       </div>
@@ -156,8 +157,8 @@ const Work = () => {
               })}
               {/* Slider Buttons */}
               <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w[44px] h-[44px] flex justify-center items-center transition-all"
+                containerStyles="flex gap-2 absolute left-1/2 transform -translate-x-1/2 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                btnStyles="bg-white hover:bg-accent transition-all duration-300 text-primary text-[20px] w-[80px] h-[30px] flex justify-center items-center transition-all"
               />
             </Swiper>
           </div>

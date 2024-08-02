@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,6 +38,46 @@ const info = [
 import { motion } from "framer-motion";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    reason: "",
+    message: "",
+  });
+  const [messageStatus, setMessageStatus] = useState("");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSelectChange = (value) => {
+    setFormData({ ...formData, reason: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setMessageStatus("Message sent successfully!");
+        },
+        (error) => {
+          console.log(error.text);
+          setMessageStatus("Failed to send message, please try again.");
+        }
+      );
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,7 +91,10 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* Form */}
           <div className="xl:w-[64%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              onSubmit={handleSubmit}
+            >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
                 If you're interested in what you have seen so far and would like
@@ -58,33 +102,64 @@ const Contact = () => {
               </p>
               {/* Input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="First Name" />
-                <Input type="lastname" placeholder="Last Name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone Number" />
+                <Input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
               {/* Select */}
-              <Select>
+              <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Reason for Contacting" />
+                  <SelectValue
+                    placeholder="Reason for Contacting"
+                    value={formData.reason}
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Reason for Contacting</SelectLabel>
-                    <SelectItem value="est">Job Offer</SelectItem>
-                    <SelectItem value="cst">Services</SelectItem>
-                    <SelectItem value="mst">Other</SelectItem>
+                    <SelectItem value="Job Offer">Job Offer</SelectItem>
+                    <SelectItem value="Services">Services</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* Text Area */}
               <Textarea
                 className="h-[200px]"
+                name="message"
                 placeholder="Type your message here."
+                value={formData.message}
+                onChange={handleChange}
               />
-              <Button size="md" className="max-w-40">
+              <Button size="md" className="max-w-40" type="submit">
                 Send message
               </Button>
+              {messageStatus && <p>{messageStatus}</p>}
             </form>
           </div>
           {/* Info */}

@@ -14,8 +14,7 @@ const Home = () => {
           {/* Text Part */}
           <div className="text-center xl:text-left order-2 xl:order-none">
             <h1 className="h1 mb-6">
-              <span className="">Jason Faeq</span>
-              <br />
+              <span className="">A</span>
               <span>
                 <WordAnimation /> <br />
                 Engineer
