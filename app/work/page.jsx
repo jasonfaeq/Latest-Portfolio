@@ -36,7 +36,7 @@ const projects = [
     description:
       "A simple landing page for a gym with a modern design and a smooth user experience.",
     stack: [
-      { name: "Next JS" },
+      { name: "Next.js" },
       { name: "Tailwind CSS" },
       { name: "Framer Motion" },
     ],

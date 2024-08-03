@@ -28,7 +28,7 @@ const Home = () => {
             {/* Button and Socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-                href="/public/assets/resume.pdf"
+                href="/JasonFaeqsResume.pdf"
                 download="resume.pdf"
                 className="inline-block"
               >
