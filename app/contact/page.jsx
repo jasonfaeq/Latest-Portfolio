@@ -25,7 +25,7 @@ const info = [
   },
   {
     icon: <FaEnvelope />,
-    title: "Email",
+    title: "E-mail",
     description: "jasonfaeq@gmail.com",
   },
   {
@@ -46,7 +46,10 @@ const Contact = () => {
     reason: "",
     message: "",
   });
+
   const [messageStatus, setMessageStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -58,6 +61,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     emailjs
       .send(
@@ -70,10 +74,20 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           setMessageStatus("Message sent successfully!");
+          setIsSubmitting(false);
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            reason: "",
+            message: "",
+          });
         },
         (error) => {
           console.log(error.text);
           setMessageStatus("Failed to send message, please try again.");
+          setIsSubmitting(false);
         }
       );
   };
@@ -156,8 +170,13 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
               />
-              <Button size="md" className="max-w-40" type="submit">
-                Send message
+              <Button
+                size="md"
+                className="max-w-40"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send message"}
               </Button>
               {messageStatus && <p>{messageStatus}</p>}
             </form>
