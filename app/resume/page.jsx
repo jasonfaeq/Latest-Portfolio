@@ -209,6 +209,10 @@ const skills = {
       name: "figma",
     },
     {
+      icon: <PiMicrosoftExcelLogo />,
+      name: "Microsoft Excel",
+    },
+    {
       icon: <PiFileSqlLight />,
       name: "SQL",
     },
@@ -235,10 +239,6 @@ const skills = {
     {
       icon: <SiCplusplus />,
       name: "C and C++",
-    },
-    {
-      icon: <PiMicrosoftExcelLogo />,
-      name: "Microsoft Excel",
     },
   ],
 };
