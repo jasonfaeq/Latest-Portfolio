@@ -11,8 +11,12 @@ const Home = () => {
     <section className="h-full">
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+          {/* Photo Part */}
+          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+            <Photo />
+          </div>
           {/* Text Part */}
-          <div className="text-center xl:text-left order-2 xl:order-none">
+          <div className="text-center xl:text-left order-2 xl:order-none w-[50%]">
             <h1 className="h1 mb-6">
               <span className="">A</span>
               <span>
@@ -21,8 +25,9 @@ const Home = () => {
               </span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              Quick learner with skills in programming and software, backed by
-              studies in petroleum, information and environmental engineering.
+              A humble quick learner with skills in programming and software,
+              backed by studies in petroleum, information and environmental
+              engineering.
             </p>
 
             {/* Button and Socials */}
@@ -48,11 +53,6 @@ const Home = () => {
                 />
               </div>
             </div>
-          </div>
-
-          {/* Photo Part */}
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
-            <Photo />
           </div>
         </div>
       </div>

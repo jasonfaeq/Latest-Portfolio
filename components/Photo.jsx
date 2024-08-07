@@ -20,7 +20,8 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[298px] h-[298px] xl:w-[525px] xl:h-[500px] absolute"
+          className="w-[298px] h-[298px] xl:w-[515px] xl:h-[500px] absolute"
+          style={{ top: "3px", left: "-2px" }}
         >
           <Image
             src="/assets/myphoto.png"

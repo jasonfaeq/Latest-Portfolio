@@ -21,6 +21,24 @@ const projects = [
   {
     num: "01",
     category: "dataanalysis",
+    title: "Scrape Spotify Playlist",
+    description:
+      "Scraping my biggest Spotify playlist to analyze and to find out the most popular artists, genres, and songs. The results were visualized through different charts.",
+    stack: [
+      { name: "Python" },
+      { name: "Pandas" },
+      { name: "Matplotlib" },
+      { name: "Plotly" },
+      { name: "Web Scraping" },
+      { name: "Power BI" },
+    ],
+    image: "/assets/work/thumb3.jpg",
+    live: "https://github.com/jasonfaeq/Spotify-Playlist",
+    github: "https://github.com/jasonfaeq/Spotify-Playlist",
+  },
+  {
+    num: "02",
+    category: "dataanalysis",
     title: "Steam Game Analysis",
     description:
       "This project is a data analysis project that analyzes the data of the games on the Steam platform with focus on Bethesda Game Studios.",
@@ -30,7 +48,7 @@ const projects = [
     github: "https://github.com/jasonfaeq/steam-statistics/",
   },
   {
-    num: "02",
+    num: "03",
     category: "frontend",
     title: "Dragon Gym",
     description:
@@ -78,7 +96,7 @@ const Work = () => {
               </h2>
               {/* Project Description */}
               <p className="text-white/60">{project.description}</p>
-              <ul className="flex gap-4">
+              <ul className="flex gap-4 flex-wrap">
                 {project.stack.map((item, index) => {
                   return (
                     <li key={index} className="text-xl text-accent capitalize">

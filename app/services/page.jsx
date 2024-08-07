@@ -10,28 +10,28 @@ const services = [
     title: "Web Development",
     description:
       "Building responsive and high-performing websites with the most modern of technologies to ensure compatibility with most devices and gadgets.",
-    href: "",
+    href: "/work",
   },
   {
     num: "02",
     title: "UX/UI Design",
     description:
       "Creating intuitive and visually appealing animated user interfaces that enhance user experience and engagement and have easier access as well.",
-    href: "",
+    href: "/work",
   },
   {
     num: "03",
     title: "Video Editing",
     description:
       "I love crafting compelling video content with professional editing techniques to captivate people and whatever set audience I am targeting.",
-    href: "",
+    href: "/work",
   },
   {
     num: "04",
     title: "Data Analysis",
     description:
       "A passion for analyzing and interpreting complex data sets to drive informed decision-making and strategic planning.",
-    href: "",
+    href: "/work",
   },
 ];
 
