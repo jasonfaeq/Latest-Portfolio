@@ -16,7 +16,7 @@ const stats = [
     text: "Years of Computer Fiddling",
   },
   {
-    num: 22,
+    num: 25,
     text: "Technologies Learnt",
   },
   {
