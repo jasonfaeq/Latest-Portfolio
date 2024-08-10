@@ -17,7 +17,7 @@ const Home = () => {
           </div>
           {/* Text Part */}
           <div className="text-center xl:text-left order-2 xl:order-none w-[50%]">
-            <h1 className="h1 mb-6">
+            <h1 className="h1 mb-6 xl:text-6xl lg:text-4xl md: text-2xl sm:text-[42px]">
               <span className="">A</span>
               <span>
                 <WordAnimation /> <br />
@@ -25,9 +25,8 @@ const Home = () => {
               </span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              A humble quick learner with skills in programming and software,
-              backed by studies in petroleum, information and environmental
-              engineering.
+              A quick learner with skills in programming and software, backed by
+              studies in petroleum, information and environmental engineering.
             </p>
 
             {/* Button and Socials */}

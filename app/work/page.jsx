@@ -39,16 +39,33 @@ const projects = [
   {
     num: "02",
     category: "dataanalysis",
+    title: "Asiacell's CRM Application",
+    description:
+      "A CRM app made from scratch for Asiacell, a leading telecom company in Iraq. The app was used to manage customer data with a user-friendly interface and safe authentication for employees.",
+    stack: [
+      { name: "Python" },
+      { name: "Django" },
+      { name: "mySQL" },
+      { name: "Azure" },
+      { name: "Bootstrap" },
+    ],
+    image: "/assets/work/thumb4.png",
+    live: "https://asiacellcrm-ajfwavgjc6b9gmgq.eastus-01.azurewebsites.net/",
+    github: "https://github.com/jasonfaeq/Asiacell-CRM",
+  },
+  {
+    num: "03",
+    category: "dataanalysis",
     title: "Steam Game Analysis",
     description:
-      "This project is a data analysis project that analyzes the data of the games on the Steam platform with focus on Bethesda Game Studios.",
+      "Analysis and cleaning of a big database for games on the Steam platform with some statistical focus on Bethesda Game Studios.",
     stack: [{ name: "SQL" }, { name: "Microsoft Power BI" }],
     image: "/assets/work/thumb1.png",
     live: "https://github.com/jasonfaeq/steam-statistics/",
     github: "https://github.com/jasonfaeq/steam-statistics/",
   },
   {
-    num: "03",
+    num: "04",
     category: "frontend",
     title: "Dragon Gym",
     description:
